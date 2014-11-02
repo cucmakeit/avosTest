@@ -1,0 +1,25 @@
+{
+	"title": "a test",
+	"content": "this is a message for test."
+}
+
+{
+	"content": "Yeah, I have received."
+}
+
+
+handleRelation:
+{
+	"userId": "543fc73ee4b014ba36dff0ef",
+	"commentId": "543e0412e4b080e44ca1590f"
+}
+
+relationQuery:
+{
+	"userId": "543fc73ee4b014ba36dff0ef"
+}
+
+relationReverseQuery:
+{
+	"commentId": "54536c8ee4b06ba70c29a771"
+}
