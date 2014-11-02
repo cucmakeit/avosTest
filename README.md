@@ -17,6 +17,8 @@
 ##基本技能
 * C/C++　　JavaPython　　Scala　　JavaScript
 
-* Spark　　Hbase　　Node.js
+* Spark　　Hadoop　　Node.js
+
+* Hbase　　Hive　　mysql　　mongodb 
 
 * 机器学习算法 
