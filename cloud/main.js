@@ -11,21 +11,24 @@ function cloudErrorFn(response) {
 
 AV.Cloud.define("hello", function(request, response) {
   console.log("hello world");
-  response.success("hello world");
+  response.success();
+});
+
+AV.Cloud.define("testError", function(request, response) {
+  console.log("hello world");
+  var error = 500;
+  response.error(error);
 });
 
 AV.Cloud.define("TriggerError", function(request, response) {
   //var p = new AV.Promise();
   var GameScore = AV.Object.extend("GameScoreError2");
   var gameScore = new AV.Query(GameScore);
-  
-
   gameScore.first().then(function(){
 	response.success("Succeed Save.");
 	},cloudErrorFn(response)
 	);	
 });
-
 
 AV.Cloud.define("saveScore", function(request, response) {
   var GameScore = AV.Object.extend("GameScore");
@@ -217,12 +220,11 @@ AV.Cloud.define("saveFile", function(request, response){
 
 AV.Cloud.define("register", function(request, response){
   var user = new AV.User();
-  user.set("username", "Cuice1");
-  user.set("password", "123456");
-  user.set("email", "daydaycool@163.com");
+  user.set("username", request.params.username);
+  user.set("password", request.params.password);
 
   // other fields can be set just like with AV.Object
-  user.set("phone", "13120398656");
+  user.set("mobilePhoneNumber", request.params.mobilePhoneNumber);
 
   user.signUp(null, {
     success: function(user) {
@@ -231,7 +233,8 @@ AV.Cloud.define("register", function(request, response){
     },
     error: function(user, error) {
       // Show the error message somewhere and let the user try again.
-      response.success("Error: " + error.code + " " + error.message);
+      response.error("Error: " + error.code + " " + error.message);
+      //response.error(error.code);
     }
   });
 });
